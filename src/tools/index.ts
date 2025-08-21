@@ -9,6 +9,7 @@ import * as riven_items from "./riven_items.js";
 import * as riven_attributes from "./riven_attributes.js";
 import * as search_riven_auctions from "./search_riven_auctions.js";
 import * as price_snapshot from "./price_snapshot.js";
+import * as best_flips from './best_flips.js';
 
 
 const modules = [
@@ -20,6 +21,7 @@ const modules = [
     riven_attributes,
     search_riven_auctions,
     price_snapshot,
+    best_flips,
 ] as const;
 
 

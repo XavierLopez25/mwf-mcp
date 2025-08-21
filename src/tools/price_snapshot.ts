@@ -4,6 +4,7 @@ import { getOrdersSummary } from "./get_orders.js";
 
 
 export const name = "wfm_price_snapshot" as const;
+
 export const def: ToolDef = {
     name,
     description: "Atajo: devuelve mejor venta y mejor compra para un item en una plataforma.",
@@ -12,15 +13,20 @@ export const def: ToolDef = {
         properties: {
             url_name: { type: "string" },
             platform: { type: "string", enum: ["pc", "xbox", "ps4", "switch"] },
-            language: { type: "string" }
+            language: { type: "string" },
+            status: { type: "string", enum: ["any", "online", "ingame"] },
+            min_reputation: { type: "integer" },
+            region: { type: "string" },
+            depth: { type: "integer", minimum: 1, maximum: 10 }
         },
         required: ["url_name"],
         additionalProperties: false
     }
 };
+
 export const handler: ToolHandler = async (args: any) => {
-    const { url_name, platform, language } = args ?? {};
+    const { url_name, platform, language, status, min_reputation, region, depth } = args ?? {};
     if (!url_name) throw new Error("'url_name' is required");
-    const summary = await getOrdersSummary({ url_name, platform, language, summarize: true });
+    const summary = await getOrdersSummary({ url_name, platform, language, status, min_reputation, region, depth, summarize: true });
     return { url_name, platform: platform || DEFAULT_PLATFORM, summary };
 };
