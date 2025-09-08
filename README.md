@@ -1,7 +1,3 @@
-Here’s a comprehensive, plug-and-play README you can drop into your repo. It’s written for someone who’s never seen the project before and wants to integrate it quickly and safely.
-
----
-
 # warframe-market-mcp
 
 A **Model Context Protocol (MCP)** server that exposes **Warframe.Market** as a set of LLM-friendly tools. It provides price snapshots, order summaries with filtering (e.g., **ONLINE IN GAME** sellers), drop sources, and riven search — all over **STDIO + JSON-RPC 2.0**.
